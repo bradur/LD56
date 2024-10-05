@@ -15,32 +15,54 @@ public class PlayerCharacter : MonoBehaviour
     [SerializeField]
     private Animator animator;
 
+    private bool moveRight = false;
+    private bool moveLeft = false;
+    private bool moveUp = false;
+    private bool moveDown = false;
+    private float inputWindow = 0.1f;
+
+    private int xDirection = 0;
+    private int yDirection = 0;
+
     private PlayerAnimation animState = PlayerAnimation.Idle;
 
     void Start()
     {
 
     }
-    void Update()
+    void FixedUpdate()
     {
-
+        float xAxis = Input.GetAxis("Horizontal");
+        float yAxis = Input.GetAxis("Vertical");
+        xDirection = xAxis > inputWindow ? 1 : (xAxis < -inputWindow ? -1 : 0);
+        yDirection = yAxis > inputWindow ? 1 : (yAxis < -inputWindow ? -1 : 0);
+        UIDebugText.main.ShowMessage($"x[{xAxis}] = {xDirection}\ny[{yAxis}] = {yDirection}");
     }
 
     public Vector2Int GetMovementInput()
     {
-        bool moveRight = Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow);
-        bool moveLeft = Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow);
-        bool moveUp = Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow);
-        bool moveDown = Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow);
-        int xDirection = moveRight ? 1 : (moveLeft ? -1 : 0);
-        int yDirection = moveUp ? 1 : (moveDown ? -1 : 0);
         return new Vector2Int(xDirection, yDirection);
+    }
+
+    public static MoveResult AttemptMove(Vector2Int start, Vector2Int direction)
+    {
+        MoveAttempt attempt = new() { Origin = start, Direction = direction };
+        return WorldGrid.main.MoveAttempt(attempt);
     }
 
     public bool InputExists()
     {
+        bool right = Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow);
+        bool left = Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow);
+        bool up = Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow);
+        bool down = Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow);
+        return right || left || up || down;
+    }
+    public bool InputMatches(MoveResult result)
+    {
         Vector2Int moveInput = GetMovementInput();
-        return moveInput.x != 0 || moveInput.y != 0;
+        MoveAttempt attempt = result.Attempt;
+        return moveInput == attempt.Direction;
     }
 
     public void Animate(PlayerAnimation animation)

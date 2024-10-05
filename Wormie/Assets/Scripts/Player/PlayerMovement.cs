@@ -21,7 +21,6 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 startPosition;
     private Vector2 targetPosition;
 
-    private WorldTile targetTile;
 
     private float waitBeforeIdle = 0.5f;
     private float waitBeforeIdleTimer = 0f;
@@ -34,13 +33,6 @@ public class PlayerMovement : MonoBehaviour
     {
 
     }
-
-    private MoveResult AttemptMove(Vector2Int start, Vector2Int direction)
-    {
-        MoveAttempt attempt = new() { Origin = start, Direction = direction };
-        return WorldGrid.main.MoveAttempt(attempt);
-    }
-
 
     // Update is called once per frame
     void Update()
@@ -68,17 +60,25 @@ public class PlayerMovement : MonoBehaviour
         Vector2Int newDirection = PlayerCharacter.main.GetMovementInput();
         if (newDirection.magnitude > 0)
         {
-            MoveResult result = AttemptMove(gridPosition, newDirection);
+            MoveResult result = PlayerCharacter.AttemptMove(gridPosition, newDirection);
             PlayerCharacter.main.FaceDirection(newDirection.x);
             if (result.Success)
             {
-                StartMoving(result.Position);
+                if (result.Tile != null && result.Tile.Diggable(PlayerLevel.main.DigPower))
+                {
+                    digger.StartDigging(result);
+                    isOnDiggingCooldown = true;
+                }
+                else
+                {
+                    StartMoving(result.Position);
+                }
             }
-            else if (result.Tile == null || result.Tile.Type == WorldTileType.Stone)
+            else if (result.Tile == null || !result.Tile.Diggable(PlayerLevel.main.DigPower))
             {
                 PlayerCharacter.main.Animate(PlayerAnimation.Move);
             }
-            else if (result.Tile.Type == WorldTileType.Dirt)
+            else if (result.Tile != null && result.Tile.Diggable(PlayerLevel.main.DigPower))
             {
                 digger.StartDigging(result);
                 isOnDiggingCooldown = true;
@@ -128,6 +128,14 @@ public struct MoveAttempt
 
 public struct MoveResult
 {
+    public MoveResult(MoveAttempt attempt, Vector2Int position, WorldTile tile, bool success)
+    {
+        Attempt = attempt;
+        Position = position;
+        Tile = tile;
+        Success = success;
+    }
+    public MoveAttempt Attempt;
     public Vector2Int Position;
     public WorldTile Tile;
     public bool Success;
