@@ -15,6 +15,8 @@ public class PlayerCharacter : MonoBehaviour
     [SerializeField]
     private Animator animator;
 
+    private PlayerAnimation animState = PlayerAnimation.Idle;
+
     void Start()
     {
 
@@ -24,10 +26,38 @@ public class PlayerCharacter : MonoBehaviour
 
     }
 
+    public Vector2Int GetMovementInput()
+    {
+        bool moveRight = Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow);
+        bool moveLeft = Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow);
+        bool moveUp = Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow);
+        bool moveDown = Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow);
+        int xDirection = moveRight ? 1 : (moveLeft ? -1 : 0);
+        int yDirection = moveUp ? 1 : (moveDown ? -1 : 0);
+        return new Vector2Int(xDirection, yDirection);
+    }
+
+    public bool InputExists()
+    {
+        Vector2Int moveInput = GetMovementInput();
+        return moveInput.x != 0 || moveInput.y != 0;
+    }
+
     public void Animate(PlayerAnimation animation)
     {
-
         animator.Play($"player{animation}");
+        animState = animation;
+    }
+
+    public void AnimateReset()
+    {
+        if (!InputExists())
+        {
+            if (animState != PlayerAnimation.Idle)
+            {
+                Animate(PlayerAnimation.Empty);
+            }
+        }
     }
 
     public void FaceDirection(int direction)
@@ -46,5 +76,6 @@ public enum PlayerAnimation
 {
     Idle,
     Move,
-    Eat
+    Dig,
+    Empty
 }

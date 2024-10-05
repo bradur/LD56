@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class FollowTarget : MonoBehaviour
@@ -8,6 +9,9 @@ public class FollowTarget : MonoBehaviour
     private bool followY = false;
     [SerializeField]
     private bool followZ = false;
+
+    [SerializeField]
+    private UpdateMode updateMode;
     [SerializeField]
     private Transform target;
 
@@ -19,6 +23,31 @@ public class FollowTarget : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+    {
+        if (updateMode != UpdateMode.Update)
+        {
+            return;
+        }
+        UpdatePosition();
+    }
+    void FixedUpdate()
+    {
+        if (updateMode != UpdateMode.FixedUpdate)
+        {
+            return;
+        }
+        UpdatePosition();
+    }
+    void LateUpdate()
+    {
+        if (updateMode != UpdateMode.LateUpdate)
+        {
+            return;
+        }
+        UpdatePosition();
+    }
+
+    private void UpdatePosition()
     {
         Vector3 pos = transform.position;
         if (followX)
@@ -35,4 +64,12 @@ public class FollowTarget : MonoBehaviour
         }
         transform.position = pos;
     }
+}
+
+
+public enum UpdateMode
+{
+    Update,
+    FixedUpdate,
+    LateUpdate
 }
