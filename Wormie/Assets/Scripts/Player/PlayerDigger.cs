@@ -38,7 +38,12 @@ public class PlayerDigger : MonoBehaviour
                 PlayerLevel.main.GainXp(moveResult.Tile.XpFinish, moveResult.Position);
                 if (digResult.AfterDigPrefab)
                 {
-                    Instantiate(digResult.AfterDigPrefab);
+                    GameObject afterDig = Instantiate(digResult.AfterDigPrefab);
+                    LootDrop lootDrop = afterDig.GetComponent<LootDrop>();
+                    if (lootDrop != null)
+                    {
+                        lootDrop.Initialize(moveResult.Position);
+                    }
                 }
             }
             else

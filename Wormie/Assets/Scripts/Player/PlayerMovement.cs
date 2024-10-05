@@ -13,6 +13,8 @@ public class PlayerMovement : MonoBehaviour
     private Vector2Int gridPosition = Vector2Int.zero;
     private Vector2Int targetGridPosition = Vector2Int.zero;
 
+    public Vector2Int GridPosition { get { return gridPosition; } }
+
     [SerializeField]
     private Transform movingTransform;
     [SerializeField]
@@ -31,7 +33,10 @@ public class PlayerMovement : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        FogOfWar.main.ClearFog(gridPosition);
+        if (FogOfWar.main != null)
+        {
+            FogOfWar.main.ClearFog(gridPosition);
+        }
     }
 
     // Update is called once per frame
@@ -116,7 +121,10 @@ public class PlayerMovement : MonoBehaviour
             moveTimer = 0f;
             gridPosition = targetGridPosition;
             PlayerCharacter.main.AnimateReset();
-            FogOfWar.main.ClearFog(gridPosition);
+            if (FogOfWar.main != null)
+            {
+                FogOfWar.main.ClearFog(gridPosition);
+            }
         }
     }
 }

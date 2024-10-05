@@ -20,7 +20,7 @@ public class UIPopText : MonoBehaviour
     public void Show(string message, Vector2 position, Color color)
     {
         container.position = Camera.main.WorldToScreenPoint(position);
-        Debug.Log($"Pos: {position}");
+        //        Debug.Log($"Pos: {position}");
         txtMessage.text = $"<color=#{color.ToHexString()}>{message}</color>";
         animator.Play("uiPopTextShow");
     }

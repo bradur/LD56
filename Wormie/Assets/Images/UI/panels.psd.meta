@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 3943dacc57dd856428b718736b06a0bc
+guid: ea617eab26f019f46810945f9ea99b71
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5634026908348037240
-    second: dirt_0
+      213: 8432350258525226710
+    second: panels_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,7 +126,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: dirt_0
+      name: panels_0
       rect:
         serializedVersion: 2
         x: 0
@@ -135,23 +135,45 @@ TextureImporter:
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 4, y: 4, z: 4, w: 4}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 878b31f6f95103e40800000000000000
-      internalID: 5634026908348037240
+      spriteID: 6d6c11532e9b50570800000000000000
+      internalID: 8432350258525226710
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dirt_1
+      name: panels_1
       rect:
         serializedVersion: 2
         x: 16
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 4, y: 4, z: 4, w: 4}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 231cf897857b31c42b18a3b77a15b394
+      internalID: 1452587423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: panels_2
+      rect:
+        serializedVersion: 2
+        x: 32
         y: 48
         width: 16
         height: 16
@@ -163,36 +185,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 33dc78271bb5f0d41892558f50e7fd6a
-      internalID: 920347046
+      spriteID: 7a610832598c1da4d8e4ec1784756686
+      internalID: 2068800151
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dirt_2
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 48
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7e7d7b890d935f24aa556da4ffe012b6
-      internalID: -854617986
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: dirt_3
+      name: panels_3
       rect:
         serializedVersion: 2
         x: 48
@@ -207,36 +207,36 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e66327aeeff18ae4bb653e0a3f565282
-      internalID: 1592250148
+      spriteID: d2ec73ffa824c2042a46d137f2b557b1
+      internalID: -1081841618
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: goodie_0
+      name: panels_4
       rect:
         serializedVersion: 2
         x: 0
         y: 32
         width: 16
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      alignment: 9
+      pivot: {x: 0.25, y: 0.5}
+      border: {x: 4, y: 4, z: 4, w: 4}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1c5463de2e71f6046869b1d0be812b3d
-      internalID: 302416842
+      spriteID: 423f5c3aca154cf4dab803bbd9590d80
+      internalID: 1057125164
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: goodie_1
+      name: panels_5
       rect:
         serializedVersion: 2
         x: 16
@@ -245,20 +245,20 @@ TextureImporter:
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 4, y: 4, z: 4, w: 4}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e53377b1fe63b59439619600db0ea859
-      internalID: 2095390963
+      spriteID: deebbb003e5475a42bc193eaf3d5673c
+      internalID: 702584751
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: goodie_2
+      name: panels_6
       rect:
         serializedVersion: 2
         x: 32
@@ -273,14 +273,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5f9d5fea96c670e428a2897ec2eb1b91
-      internalID: -1734705954
+      spriteID: f03d46698b8ad484b8d2138c0f0fc438
+      internalID: -89362988
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: goodie_3
+      name: panels_7
       rect:
         serializedVersion: 2
         x: 48
@@ -295,14 +295,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f7f76e207c177004eb4842a514a0f547
-      internalID: -1372180461
+      spriteID: ceffad632399531439a63bcefc6f97f9
+      internalID: -450072594
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: packed_0
+      name: panels_8
       rect:
         serializedVersion: 2
         x: 0
@@ -317,14 +317,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 575c840d478844146a4672a1967cc287
-      internalID: -278162478
+      spriteID: 9026a628e58e7af43802dfecf914b6ed
+      internalID: -1608751325
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: packed_1
+      name: panels_9
       rect:
         serializedVersion: 2
         x: 16
@@ -339,14 +339,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a4168f669bfef4f4b88069d24e1f464a
-      internalID: 1123405632
+      spriteID: f1f03f16add76ea4eab79fad9d0ecc23
+      internalID: -1316018426
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: packed_2
+      name: panels_10
       rect:
         serializedVersion: 2
         x: 32
@@ -361,14 +361,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d81d45a6d0378aa4da78f79ca2e0eb1b
-      internalID: 2038676751
+      spriteID: 8ad0252e12d85c84bab7fbba5c90b2ec
+      internalID: 264132195
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: packed_3
+      name: panels_11
       rect:
         serializedVersion: 2
         x: 48
@@ -383,14 +383,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ec2e0ee2ad919ba4f9b180666005bf1d
-      internalID: -1087085759
+      spriteID: 256deb321e6136140b9d62ddead93d60
+      internalID: 2142456157
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dirt_8
+      name: panels_12
       rect:
         serializedVersion: 2
         x: 0
@@ -405,14 +405,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 05acd766cf7a28b4ca85f324ecac84f1
-      internalID: -84470562
+      spriteID: 5a3eed1707bc29841880db062c0340ad
+      internalID: -1311642770
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dirt_9
+      name: panels_13
       rect:
         serializedVersion: 2
         x: 16
@@ -427,14 +427,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bf25710bc2e2e814c94ad6866f0dafcc
-      internalID: -651464039
+      spriteID: 59d9fa32afb6fc842b5b3504674a17fc
+      internalID: 1542744271
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dirt_10
+      name: panels_14
       rect:
         serializedVersion: 2
         x: 32
@@ -449,14 +449,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 088aa6e62ac9b8a409418930c6586cad
-      internalID: 1853359694
+      spriteID: 6cdd020a450f5494a91c6d7d9352acfd
+      internalID: -342823087
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dirt_11
+      name: panels_15
       rect:
         serializedVersion: 2
         x: 48
@@ -471,8 +471,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 41e7ccdc839a3bf499203203ce726e20
-      internalID: -975281667
+      spriteID: c72d1649e94c0684dbfbfb617d2e5c3d
+      internalID: 199660924
       vertices: []
       indices: 
       edges: []
@@ -481,7 +481,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 2638a8300ebc179438341c52e865ce3c
+    spriteID: 836924fbaa47c014484c77095746d5bc
     internalID: 0
     vertices: []
     indices: 
@@ -491,22 +491,22 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      dirt_0: 5634026908348037240
-      dirt_1: 920347046
-      dirt_10: 1853359694
-      dirt_11: -975281667
-      dirt_2: -854617986
-      dirt_3: 1592250148
-      dirt_8: -84470562
-      dirt_9: -651464039
-      goodie_0: 302416842
-      goodie_1: 2095390963
-      goodie_2: -1734705954
-      goodie_3: -1372180461
-      packed_0: -278162478
-      packed_1: 1123405632
-      packed_2: 2038676751
-      packed_3: -1087085759
+      panels_0: 8432350258525226710
+      panels_1: 1452587423
+      panels_10: 264132195
+      panels_11: 2142456157
+      panels_12: -1311642770
+      panels_13: 1542744271
+      panels_14: -342823087
+      panels_15: 199660924
+      panels_2: 2068800151
+      panels_3: -1081841618
+      panels_4: 1057125164
+      panels_5: 702584751
+      panels_6: -89362988
+      panels_7: -450072594
+      panels_8: -1608751325
+      panels_9: -1316018426
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

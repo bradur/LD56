@@ -1,8 +1,6 @@
 using System.Collections.Generic;
-using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-using UnityEngine.UIElements;
 
 public class WorldGrid : MonoBehaviour
 {
@@ -25,13 +23,13 @@ public class WorldGrid : MonoBehaviour
     {
         TileBase tile = GetTileAt(pos);
         WorldTile wTile = GetTile(pos);
-        Debug.Log($"Dig tile at pos: {pos} ({wTile})");
+
         if (wTile == null)
         {
             Debug.Log("Should not be null!");
             return new() { Finished = false };
         }
-        if (wTile.Type == WorldTileType.Dirt)
+        if (wTile.Diggable(PlayerLevel.main.DigPower))
         {
             TileBase newTile = wTile.Dig(tile);
             DrawTile(pos, newTile);
@@ -39,7 +37,12 @@ public class WorldGrid : MonoBehaviour
         }
         return new() { Finished = false };
     }
-
+    public WorldTile GetTile(Vector2 pos)
+    {
+        Vector2Int normalized = new(Mathf.RoundToInt(pos.x), Mathf.RoundToInt(pos.y));
+        Debug.Log($"normalized: {normalized}");
+        return GetTile(normalized);
+    }
     public WorldTile GetTile(Vector2Int pos)
     {
         TileBase tile = GetTileAt(pos);
@@ -48,6 +51,24 @@ public class WorldGrid : MonoBehaviour
             return null;
         }
         return worldTiles.Find(worldTile => tile.name.StartsWith(worldTile.Prefix));
+    }
+
+    public List<Vector2Int> GetTiles(Vector2 pos, int radius)
+    {
+        Vector2Int normalized = new(Mathf.RoundToInt(pos.x), Mathf.RoundToInt(pos.y));
+        List<Vector2Int> tiles = new();
+        for (int xPos = normalized.x - radius; xPos <= (pos.x + radius); xPos += 1)
+        {
+            for (int yPos = normalized.y - radius; yPos <= (pos.y + radius); yPos += 1)
+            {
+                Vector2Int newPos = new(xPos, yPos);
+                if (Mathf.Abs(Vector2Int.Distance(newPos, normalized)) > radius - 1)
+                {
+                    tiles.Add(newPos);
+                }
+            }
+        }
+        return tiles;
     }
 
     public MoveResult MoveAttempt(MoveAttempt attempt)

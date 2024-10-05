@@ -26,6 +26,11 @@ public class PlayerCharacter : MonoBehaviour
 
     private PlayerAnimation animState = PlayerAnimation.Idle;
 
+    [SerializeField]
+    private PlayerMovement playerMovement;
+
+    public Vector2Int GridPosition { get { return playerMovement.GridPosition; } }
+
     void Start()
     {
 

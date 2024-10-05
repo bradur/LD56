@@ -10,6 +10,8 @@ public class UIManager : MonoBehaviour
 
     [SerializeField]
     private UIPopText uiPopTextPrefab;
+    [SerializeField]
+    private UIXPBar uIXPBar;
 
     [SerializeField]
     private Color defaultPopTextColor;
@@ -22,6 +24,10 @@ public class UIManager : MonoBehaviour
 
     }
 
+    public void GainXp(int value)
+    {
+        uIXPBar.AddXP(value);
+    }
 
     public void ShowMessage(string message, Vector2 position)
     {
