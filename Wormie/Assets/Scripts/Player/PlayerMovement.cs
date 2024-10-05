@@ -31,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        FogOfWar.main.ClearFog(gridPosition);
     }
 
     // Update is called once per frame
@@ -116,6 +116,7 @@ public class PlayerMovement : MonoBehaviour
             moveTimer = 0f;
             gridPosition = targetGridPosition;
             PlayerCharacter.main.AnimateReset();
+            FogOfWar.main.ClearFog(gridPosition);
         }
     }
 }

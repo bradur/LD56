@@ -11,6 +11,8 @@ public class PlayerLevel : MonoBehaviour
     private int xp = 0;
     private int digPower = 0;
     public int DigPower { get { return digPower; } }
+    private int visionRadius = 1;
+    public int VisionRadius { get { return visionRadius; } }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

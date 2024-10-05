@@ -73,7 +73,7 @@ public class WorldGrid : MonoBehaviour
 
         Vector2Int yNeighborPos = new(attempt.Origin.x, attempt.Origin.y + attempt.Direction.y);
         WorldTile yNeighborTile = GetTile(yNeighborPos);
-        MoveResult moveToYNeighbor = new(attempt, xNeighborPos, xNeighborTile, true);
+        MoveResult moveToYNeighbor = new(attempt, yNeighborPos, yNeighborTile, true);
         bool yNeighborExists = yNeighborTile != null;
         if (tile == null)
         {
