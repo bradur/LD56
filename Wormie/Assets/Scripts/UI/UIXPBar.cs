@@ -47,7 +47,8 @@ public class UIXPBar : MonoBehaviour
     private void UpdateView(int currentXp, float fontSize)
     {
         int contextXp = currentXp - PlayerLevel.main.PreviousLevelXp;
-        percentage = contextXp / (PlayerLevel.main.NextLevelXP * 1.0f);
+        int contextMaxXp = PlayerLevel.main.NextLevelXP - PlayerLevel.main.PreviousLevelXp;
+        percentage = contextXp / (contextMaxXp * 1.0f);
         percentage = Mathf.Clamp(percentage, 0, 1);
         txtPercentage.fontSize = fontSize;
         //txtPercentage.text = $"{percentage * 100:0}%";

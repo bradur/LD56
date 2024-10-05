@@ -27,15 +27,15 @@ public class WorldGrid : MonoBehaviour
         if (wTile == null)
         {
             Debug.Log("Should not be null!");
-            return new() { Finished = false };
+            return new() { Finished = false, Success = false };
         }
         if (wTile.Diggable(PlayerLevel.main.DigPower))
         {
             TileBase newTile = wTile.Dig(tile);
             DrawTile(pos, newTile);
-            return new() { Finished = newTile == null, AfterDigPrefab = wTile.AfterDigPrefab };
+            return new() { Finished = newTile == null, AfterDigPrefab = wTile.AfterDigPrefab, Success = true };
         }
-        return new() { Finished = false };
+        return new() { Finished = false, Success = false };
     }
     public WorldTile GetTile(Vector2 pos)
     {
@@ -225,6 +225,7 @@ public struct DigResult
 {
     public GameObject AfterDigPrefab;
     public bool Finished;
+    public bool Success;
 }
 
 public enum WorldTileType

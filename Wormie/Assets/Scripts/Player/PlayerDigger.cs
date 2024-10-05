@@ -32,6 +32,13 @@ public class PlayerDigger : MonoBehaviour
         if (digTimer >= digDuration)
         {
             var digResult = WorldGrid.main.Dig(moveResult.Position);
+            if (!digResult.Success)
+            {
+                UIManager.main.ShowMessage("*", moveResult.Attempt.Origin, Color.red);
+                isDigging = false;
+                digTimer = 0f;
+                return;
+            }
             if (digResult.Finished)
             {
                 PlayerCharacter.main.Animate(PlayerAnimation.Empty);

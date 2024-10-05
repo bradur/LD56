@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -67,27 +68,41 @@ public class PlayerMovement : MonoBehaviour
         {
             MoveResult result = PlayerCharacter.AttemptMove(gridPosition, newDirection);
             PlayerCharacter.main.FaceDirection(newDirection.x);
-            if (result.Success)
+            if (result.Tile != null && !result.Tile.IsWall)
             {
-                if (result.Tile != null && result.Tile.Diggable(PlayerLevel.main.DigPower))
+                digger.StartDigging(result);
+                isOnDiggingCooldown = true;
+            }
+            else if (result.Success)
+            {
+                /*if (result.Tile != null && result.Tile.Diggable(PlayerLevel.main.DigPower))
                 {
                     digger.StartDigging(result);
                     isOnDiggingCooldown = true;
                 }
                 else
-                {
-                    StartMoving(result.Position);
-                }
+                {*/
+                StartMoving(result.Position);
+                //}
             }
-            else if (result.Tile == null || !result.Tile.Diggable(PlayerLevel.main.DigPower))
+            else if (result.Tile == null || result.Tile.IsWall)
             {
+                /*
+                if (result.Tile != null && !result.Tile.IsWall)
+                {
+                    digger.StartDigging(result);
+                    isOnDiggingCooldown = true;
+                }
+                else
+                {*/
                 PlayerCharacter.main.Animate(PlayerAnimation.Move);
+                //}
             }
-            else if (result.Tile != null && result.Tile.Diggable(PlayerLevel.main.DigPower))
+            /*else if (result.Tile != null && result.Tile.Diggable(PlayerLevel.main.DigPower))
             {
                 digger.StartDigging(result);
                 isOnDiggingCooldown = true;
-            }
+            }*/
             waitBeforeIdleTimer = 0f;
         }
         else if (waitBeforeIdleTimer >= waitBeforeIdle)
