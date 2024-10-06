@@ -53,7 +53,11 @@ public class WorldGrid : MonoBehaviour
             Debug.Log("The End");
             UIManager.main.ShowTheEndPopup();
         }
-        
+#if UNITY_EDITOR
+        if (allGoodies.Count == 20) {
+            UIManager.main.ShowTheEndPopup();
+        }
+#endif
             //UIManager.main.ShowTheEndPopup();
         
 

@@ -7,7 +7,8 @@ public class UIGoodieDisplay : MonoBehaviour
     [SerializeField]
     private UIGoodie uiGoodiePrefab;
     private List<UIGoodie> uiGoodies = new();
-    public List<UIGoodie> Goodies {get {return uiGoodies;}}
+    private List<UIGoodie> uiGoodiesCopy = new();
+    public List<UIGoodie> Goodies {get {return uiGoodiesCopy; }}
     [SerializeField]
     private Transform goodieContainer;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -25,6 +26,7 @@ public class UIGoodieDisplay : MonoBehaviour
             goodie.Initialize(wTile);
             uiGoodies.Add(goodie);
         }
+        uiGoodiesCopy = new(uiGoodies);
     }
 
     public void Consume(WorldTile wTile)
