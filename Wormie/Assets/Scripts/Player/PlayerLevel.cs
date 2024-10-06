@@ -114,7 +114,7 @@ public class PlayerLevel : MonoBehaviour
                 }
                 else
                 {
-                    if (level % 2 == 0)
+                    if ((level + 1) % 2 == 0)
                     {
                         UpdateDigPower(1);
                     }

@@ -8,12 +8,15 @@ public class PlayerDigger : MonoBehaviour
     private float digTimer = 0f;
     [SerializeField]
     private float digDuration = 0.5f;
+
+    private float tileHardness = 0f;
     public void StartDigging(MoveResult result)
     {
         digTimer = 0f;
         moveResult = result;
         isDigging = true;
         PlayerCharacter.main.Animate(PlayerAnimation.Dig);
+        tileHardness = result.Tile != null ? result.Tile.DigPowerRequired * 0.1f : 0f;
         //Debug.Log("started diggin'");
     }
 
@@ -29,7 +32,7 @@ public class PlayerDigger : MonoBehaviour
             isDigging = false;
             digTimer = 0f;
         }
-        if (digTimer >= (digDuration - PlayerLevel.main.DigSpeed))
+        if (digTimer >= (tileHardness + digDuration - PlayerLevel.main.DigSpeed))
         {
             var digResult = WorldGrid.main.Dig(moveResult.Position);
             if (!digResult.Success)
