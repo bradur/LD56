@@ -12,6 +12,8 @@ public class PlayerLevel : MonoBehaviour
     [SerializeField]
     private List<LevelProgress> levels = new();
 
+
+
     private LevelProgress currentLevel;
     private LevelProgress previousLevel;
 
@@ -38,6 +40,7 @@ public class PlayerLevel : MonoBehaviour
     {
         currentLevel = levels[level];
         UIManager.main.GainXp(0, delegate () { });
+        UpdateDigPower(0);
     }
 
     public SkillLevel GetSkill(UpgradeType upgradeType)
@@ -96,7 +99,8 @@ public class PlayerLevel : MonoBehaviour
         }
         xpComing += value;
         Vector2 offset = new Vector2(-1f, 0f);
-        UIManager.main.ShowMessage($"+ {value}xp", pos + offset, Color.cyan);
+        UIManager.main.ShowXpDrop(value, pos + offset);
+        //UIManager.main.ShowMessage($"+ {value}", pos + offset, Color.cyan);
         UIManager.main.GainXp(value, delegate ()
         {
             xp += xpComing;
@@ -110,12 +114,27 @@ public class PlayerLevel : MonoBehaviour
                 }
                 else
                 {
+                    if (level % 2 == 0)
+                    {
+                        UpdateDigPower(1);
+                    }
                     previousLevel = currentLevel;
                     currentLevel = levels[level];
                     UIManager.main.ShowLevelPopup();
                 }
             }
         });
+    }
+
+    private void UpdateDigPower(int level)
+    {
+        SkillLevel digPower = skills.Find(skill => skill.Type == UpgradeType.DigPower);
+        if (digPower != null)
+        {
+            digPower.Level += level;
+            float percentage = (digPower.IntValue * 1.0f) / digPower.MaxLevel;
+            UIManager.main.UpdateDigPower(digPower.IntValue, percentage);
+        }
     }
 
     // Update is called once per frame

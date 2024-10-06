@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 3943dacc57dd856428b718736b06a0bc
+guid: 3f2e1e1e0453b3a459c3daa7caca6447
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5634026908348037240
-    second: dirt_0
+      213: -534474551785796973
+    second: moreDirt_0
+  - first:
+      213: -820054644340445582
+    second: moreDirt_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -72,7 +75,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 64
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -126,7 +129,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: dirt_0
+      name: moreDirt_0
       rect:
         serializedVersion: 2
         x: 0
@@ -134,21 +137,21 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 878b31f6f95103e40800000000000000
-      internalID: 5634026908348037240
+      spriteID: 39a42571a3a2598f0800000000000000
+      internalID: -534474551785796973
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dirt_1
+      name: moreDirt_1
       rect:
         serializedVersion: 2
         x: 16
@@ -156,21 +159,21 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 33dc78271bb5f0d41892558f50e7fd6a
-      internalID: 920347046
+      spriteID: 27eada355a49e94f0800000000000000
+      internalID: -820054644340445582
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dirt_2
+      name: moreDirt_2
       rect:
         serializedVersion: 2
         x: 32
@@ -178,21 +181,21 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7e7d7b890d935f24aa556da4ffe012b6
-      internalID: -854617986
+      spriteID: e7516c98797c6e74fb52813f7fbefa45
+      internalID: -2036018195
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dirt_3
+      name: moreDirt_3
       rect:
         serializedVersion: 2
         x: 48
@@ -200,21 +203,21 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e66327aeeff18ae4bb653e0a3f565282
-      internalID: 1592250148
+      spriteID: 1e03c8ddfa5ce314ebf036e216fab9e6
+      internalID: 1067977461
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: goodie_0
+      name: moreDirt_4
       rect:
         serializedVersion: 2
         x: 0
@@ -222,21 +225,21 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1c5463de2e71f6046869b1d0be812b3d
-      internalID: 302416842
+      spriteID: cacf9ed25b8d3b9478b36230a45032e3
+      internalID: -685486720
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: goodie_1
+      name: moreDirt_5
       rect:
         serializedVersion: 2
         x: 16
@@ -244,21 +247,21 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e53377b1fe63b59439619600db0ea859
-      internalID: 2095390963
+      spriteID: 06eeb75345bc9ea4fbed5a450f60e59f
+      internalID: -1439726417
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: goodie_2
+      name: moreDirt_6
       rect:
         serializedVersion: 2
         x: 32
@@ -266,21 +269,21 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5f9d5fea96c670e428a2897ec2eb1b91
-      internalID: -1734705954
+      spriteID: 863d365264cf8db429a6ed7a12908c38
+      internalID: 177362933
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: goodie_3
+      name: moreDirt_7
       rect:
         serializedVersion: 2
         x: 48
@@ -288,21 +291,21 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f7f76e207c177004eb4842a514a0f547
-      internalID: -1372180461
+      spriteID: 07d370932ac254c498a9b5495d3c38d0
+      internalID: 859903826
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: packed_0
+      name: moreDirt_8
       rect:
         serializedVersion: 2
         x: 0
@@ -310,21 +313,21 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 575c840d478844146a4672a1967cc287
-      internalID: -278162478
+      spriteID: 04c7b52d508d2334eb9fd9e5c0247692
+      internalID: -31250113
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: packed_1
+      name: moreDirt_9
       rect:
         serializedVersion: 2
         x: 16
@@ -332,21 +335,21 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a4168f669bfef4f4b88069d24e1f464a
-      internalID: 1123405632
+      spriteID: a9a3a0e912d0ae94d9005ce5c96dafcd
+      internalID: 1629038942
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: packed_2
+      name: moreDirt_10
       rect:
         serializedVersion: 2
         x: 32
@@ -354,21 +357,21 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d81d45a6d0378aa4da78f79ca2e0eb1b
-      internalID: 2038676751
+      spriteID: 9bf57c239feb6b441ba82aa94702d236
+      internalID: 1627294413
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: packed_3
+      name: moreDirt_11
       rect:
         serializedVersion: 2
         x: 48
@@ -376,21 +379,21 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ec2e0ee2ad919ba4f9b180666005bf1d
-      internalID: -1087085759
+      spriteID: e02bb3e9089f1254398aa5f049a3c611
+      internalID: -145006499
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pgoodie_0
+      name: moreDirt_12
       rect:
         serializedVersion: 2
         x: 0
@@ -398,21 +401,21 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 05acd766cf7a28b4ca85f324ecac84f1
-      internalID: -84470562
+      spriteID: b40bf7498ca0a1349bc30de96aabfd85
+      internalID: -1750808612
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pgoodie_1
+      name: moreDirt_13
       rect:
         serializedVersion: 2
         x: 16
@@ -420,21 +423,21 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bf25710bc2e2e814c94ad6866f0dafcc
-      internalID: -651464039
+      spriteID: c0e154eec74d7834aac9bbdadb5e42ea
+      internalID: 1868205567
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pgoodie_2
+      name: moreDirt_14
       rect:
         serializedVersion: 2
         x: 32
@@ -442,21 +445,21 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 088aa6e62ac9b8a409418930c6586cad
-      internalID: 1853359694
+      spriteID: 374f3a3370145c04eb45698fc07bbb6c
+      internalID: -2138074150
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pgoodie_3
+      name: moreDirt_15
       rect:
         serializedVersion: 2
         x: 48
@@ -464,15 +467,15 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 41e7ccdc839a3bf499203203ce726e20
-      internalID: -975281667
+      spriteID: 3eaa9f09da95fb24aace32b7cd408f50
+      internalID: -199669068
       vertices: []
       indices: 
       edges: []
@@ -481,7 +484,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 2638a8300ebc179438341c52e865ce3c
+    spriteID: 727792a07ebc7ae458265f145eb29bce
     internalID: 0
     vertices: []
     indices: 
@@ -491,22 +494,22 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      dirt_0: 5634026908348037240
-      dirt_1: 920347046
-      dirt_2: -854617986
-      dirt_3: 1592250148
-      goodie_0: 302416842
-      goodie_1: 2095390963
-      goodie_2: -1734705954
-      goodie_3: -1372180461
-      packed_0: -278162478
-      packed_1: 1123405632
-      packed_2: 2038676751
-      packed_3: -1087085759
-      pgoodie_0: -84470562
-      pgoodie_1: -651464039
-      pgoodie_2: 1853359694
-      pgoodie_3: -975281667
+      moreDirt_0: -534474551785796973
+      moreDirt_1: -820054644340445582
+      moreDirt_10: 1627294413
+      moreDirt_11: -145006499
+      moreDirt_12: -1750808612
+      moreDirt_13: 1868205567
+      moreDirt_14: -2138074150
+      moreDirt_15: -199669068
+      moreDirt_2: -2036018195
+      moreDirt_3: 1067977461
+      moreDirt_4: -685486720
+      moreDirt_5: -1439726417
+      moreDirt_6: 177362933
+      moreDirt_7: 859903826
+      moreDirt_8: -31250113
+      moreDirt_9: 1629038942
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

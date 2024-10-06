@@ -34,18 +34,48 @@ public class LootDrop : MonoBehaviour
         spriteRenderer.sprite = loot.Sprite;
         if (loot.SpawnType == SpawnType.RandomDirt)
         {
+            bool found = false;
             var tiles = WorldGrid.main.GetTiles(pos, loot.SpawnModifier);
             while (tiles.Count > 0)
             {
                 Vector2Int tilePos = tiles[UnityEngine.Random.Range(0, tiles.Count)];
                 WorldTile tile = WorldGrid.main.GetTile(tilePos);
-                if (tile != null && tile.Diggable(PlayerLevel.main.DigPower))
+                if (tile != null && tile.Type == WorldTileType.Dirt && tile.Diggable(PlayerLevel.main.DigPower))
                 {
+                    found = true;
                     targetPosition = tilePos;
                     startPosition = pos;
                     break;
                 }
                 tiles.Remove(tilePos);
+            }
+            if (!found)
+            {
+                startPosition = pos;
+                targetPosition = Vector2.zero;
+            }
+        }
+        else if (loot.SpawnType == SpawnType.RandomPackedDirt)
+        {
+            bool found = false;
+            var tiles = WorldGrid.main.GetTiles(pos, loot.SpawnModifier);
+            while (tiles.Count > 0)
+            {
+                Vector2Int tilePos = tiles[UnityEngine.Random.Range(0, tiles.Count)];
+                WorldTile tile = WorldGrid.main.GetTile(tilePos);
+                if (tile != null && tile.Type == WorldTileType.PackedDirt && tile.Diggable(PlayerLevel.main.DigPower))
+                {
+                    found = true;
+                    targetPosition = tilePos;
+                    startPosition = pos;
+                    break;
+                }
+                tiles.Remove(tilePos);
+            }
+            if (!found)
+            {
+                startPosition = pos;
+                targetPosition = Vector2.zero;
             }
         }
         transform.position = pos;
@@ -112,7 +142,8 @@ public class Loot
 
 public enum SpawnType
 {
-    RandomDirt
+    RandomDirt,
+    RandomPackedDirt
 }
 
 public enum LootType

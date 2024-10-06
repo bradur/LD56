@@ -14,7 +14,7 @@ public class PlayerDigger : MonoBehaviour
         moveResult = result;
         isDigging = true;
         PlayerCharacter.main.Animate(PlayerAnimation.Dig);
-        Debug.Log("started diggin'");
+        //Debug.Log("started diggin'");
     }
 
     void Update()

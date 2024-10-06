@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -17,16 +18,27 @@ public class UIManager : MonoBehaviour
     private UILevelPopup uiLevelPopup;
     [SerializeField]
     private UISkillsBar uiSkillsBar;
+    [SerializeField]
+    private UIDigPower uiDigPower;
 
     [SerializeField]
     private Color defaultPopTextColor;
     [SerializeField]
     private Transform messageContainer;
 
+    [SerializeField]
+    private List<XpColor> xpColors = new();
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
 
+    }
+
+    public void UpdateDigPower(int level, float percentage)
+    {
+        uiDigPower.UpdateDisplay(level, percentage);
     }
 
     public void UpdateSkill(SkillLevel skill)
@@ -42,6 +54,19 @@ public class UIManager : MonoBehaviour
     public void GainXp(int value, UnityAction finishedCallback)
     {
         uIXPBar.AddXP(value, finishedCallback);
+    }
+
+    public void ShowXpDrop(int value, Vector2 position)
+    {
+        XpColor xpColor = xpColors.Find(xpColor => value >= xpColor.MinValue && xpColor.MaxValue >= value);
+        if (xpColor == null)
+        {
+            ShowMessage($"+ {value}", position, defaultPopTextColor);
+        }
+        else
+        {
+            ShowMessage($"+ {value}", position, xpColor.Color);
+        }
     }
 
     public void ShowMessage(string message, Vector2 position)
@@ -61,4 +86,11 @@ public class UIManager : MonoBehaviour
     {
 
     }
+}
+[System.Serializable]
+public class XpColor
+{
+    public int MinValue;
+    public int MaxValue;
+    public Color Color;
 }

@@ -233,5 +233,6 @@ public enum WorldTileType
     Dirt,
     PackedDirt,
     Stone,
-    Goodie
+    Goodie,
+    MoreDirt
 }
