@@ -6,6 +6,9 @@ public class PlayerCharacter : MonoBehaviour
     public static PlayerCharacter main;
     void Awake()
     {
+#if !UNITY_EDITOR
+    Cursor.visible = false;
+#endif
         main = this;
     }
 
@@ -41,7 +44,7 @@ public class PlayerCharacter : MonoBehaviour
         float yAxis = Input.GetAxis("Vertical");
         xDirection = xAxis > inputWindow ? 1 : (xAxis < -inputWindow ? -1 : 0);
         yDirection = yAxis > inputWindow ? 1 : (yAxis < -inputWindow ? -1 : 0);
-        UIDebugText.main.ShowMessage($"x[{xAxis}] = {xDirection}\ny[{yAxis}] = {yDirection}");
+        UIDebugText.main?.ShowMessage($"x[{xAxis}] = {xDirection}\ny[{yAxis}] = {yDirection}");
     }
 
     public Vector2Int GetMovementInput()

@@ -138,7 +138,7 @@ MonoBehaviour:
     SpawnType: 3
     SpawnModifier: 10
     Sprite: {fileID: 1831218842, guid: 0f8aaf7b000fc99488732250751b7d6d, type: 3}
-    Value: 250
+    Value: 500
   animator: {fileID: 5509151501275159618}
   spriteRenderer: {fileID: 52879341390910405}
 --- !u!95 &5509151501275159618

@@ -38,6 +38,11 @@ public class PlayerLevel : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+#if !UNITY_EDITOR
+        foreach(LevelProgress level in levels) {
+            level.Level = 1;
+        }
+#endif
         currentLevel = levels[level];
         UIManager.main.GainXp(0, delegate () { });
         UpdateDigPower(0);

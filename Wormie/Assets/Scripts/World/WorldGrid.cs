@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using System.Linq;
 
 public class WorldGrid : MonoBehaviour
 {
@@ -17,6 +18,9 @@ public class WorldGrid : MonoBehaviour
     [SerializeField]
     private List<WorldTile> worldTiles = new();
 
+    [SerializeField]
+    private GameObject fogOfWar;
+
     private bool flipDir = false;
 
     private List<WorldTile> allGoodies = new();
@@ -24,7 +28,14 @@ public class WorldGrid : MonoBehaviour
 
     void Start()
     {
+#if !UNITY_EDITOR
+        fogOfWar.SetActive(true);
+#endif
         allGoodies = GetAllGoodiesInWorld();
+#if UNITY_EDITOR
+        float xp = AllAvailableXp();
+        Debug.Log($"Xp calculated at {xp}");
+#endif
         UIManager.main.InitializeGoodieDisplay(allGoodies);
     }
 
@@ -34,6 +45,41 @@ public class WorldGrid : MonoBehaviour
         UIManager.main.ConsumeGoodie(wTile);
         allGoodies.Remove(wTile);
         Debug.Log($"{allGoodies.Count} goodies remain");
+    }
+
+    public int AllAvailableXp()
+    {
+        int goodieXp = allGoodies
+            .Select(goodie => goodie.Xp * 3 + goodie.XpFinish + goodie.AfterDigPrefab.GetComponent<LootDrop>().Loot.Value)
+            .Aggregate(0, (acc, x) => acc + x);
+        List<WorldTile> diggables = GetAllDiggables();
+        int tileXp = diggables.Select(tile => tile.Xp * 3 + tile.XpFinish).Aggregate(0, (acc, x) => acc + x);
+        Debug.Log($"[goodies: {goodieXp}xp] [tiles: {tileXp}]");
+        return goodieXp + tileXp;
+    }
+
+    public List<WorldTile> GetAllDiggables()
+    {
+        List<WorldTile> diggables = new();
+        for (int xPos = tilemap.cellBounds.min.x; xPos < tilemap.cellBounds.max.x; xPos += 1)
+        {
+            for (int yPos = tilemap.cellBounds.min.y; yPos < tilemap.cellBounds.max.x; yPos += 1)
+            {
+                TileBase tile = tilemap.GetTile(new Vector3Int(xPos, yPos, 0));
+                if (tile != null && !tile.name.ToLower().Contains("goodie") && !tile.name.ToLower().Contains("stone"))
+                {
+                    WorldTile wTile = worldTiles.Find(worldTile => tile.name.StartsWith(worldTile.Prefix));
+                    if (wTile == null)
+                    {
+                        Debug.Log("should not happen");
+                        continue;
+                    }
+                    diggables.Add(wTile);
+                }
+            }
+        }
+        Debug.Log($"found {diggables.Count} diggables");
+        return diggables;
     }
 
     public List<WorldTile> GetAllGoodiesInWorld()
@@ -216,7 +262,7 @@ public class WorldGrid : MonoBehaviour
             Vector2 mousePos = Input.mousePosition;
             Vector2 vpPos = Camera.main.ScreenToWorldPoint(mousePos);
             TileBase tile = GetTileAt(vpPos);
-            UIDebugText.main.ShowMessage($"m[{mousePos}]\nvp[{vpPos}]\ntile[{tile}]");
+            UIDebugText.main?.ShowMessage($"m[{mousePos}]\nvp[{vpPos}]\ntile[{tile}]");
         }
     }
 }
