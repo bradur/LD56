@@ -14722,19 +14722,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levels:
-  - XpRequired: 10
   - XpRequired: 50
   - XpRequired: 100
-  - XpRequired: 400
+  - XpRequired: 200
+  - XpRequired: 300
   - XpRequired: 500
-  - XpRequired: 600
-  - XpRequired: 700
-  - XpRequired: 800
-  - XpRequired: 900
+  - XpRequired: 750
   - XpRequired: 1000
-  - XpRequired: 1000
-  - XpRequired: 1000
-  - XpRequired: 1000
+  - XpRequired: 1500
+  - XpRequired: 2500
+  - XpRequired: 5000
+  - XpRequired: 10000
+  - XpRequired: 20000
+  - XpRequired: 50000
   skills:
   - Level: 1
     MaxLevel: 7

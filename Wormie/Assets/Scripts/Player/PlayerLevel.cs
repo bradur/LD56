@@ -17,7 +17,7 @@ public class PlayerLevel : MonoBehaviour
     private LevelProgress currentLevel;
     private LevelProgress previousLevel;
 
-    private int xp = 0;
+    private int totalXp = 0;
     private int xpComing = 0;
     public int DigPower { get { return GetSkill(UpgradeType.DigPower).IntValue; } }
     public int VisionRadius { get { return Mathf.RoundToInt(GetSkill(UpgradeType.VisionRadius).IntValue); } }
@@ -67,19 +67,6 @@ public class PlayerLevel : MonoBehaviour
             skill.Level += 1;
             UIManager.main.UpdateSkill(skill);
         }
-        /*
-        if (Type == UpgradeType.VisionRadius)
-        {
-            visionRadius += 1;
-        }
-        if (Type == UpgradeType.MoveSpeed)
-        {
-            moveSpeed += 0.05f;
-        }
-        if (Type == UpgradeType.DigSpeed)
-        {
-            digSpeed += 0.1f;
-        }*/
     }
 
     public void GainLoot(Loot loot)
@@ -103,9 +90,9 @@ public class PlayerLevel : MonoBehaviour
         //UIManager.main.ShowMessage($"+ {value}", pos + offset, Color.cyan);
         UIManager.main.GainXp(value, delegate ()
         {
-            xp += xpComing;
+            totalXp += xpComing;
             xpComing = 0;
-            if (xp > currentLevel.XpRequired)
+            if (totalXp > currentLevel.XpRequired)
             {
                 level += 1;
                 if (level >= levels.Count)

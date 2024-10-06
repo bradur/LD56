@@ -65,7 +65,7 @@ public class UIXPBar : MonoBehaviour
         txtPercentage.fontSize = fontSize;
         //txtPercentage.text = $"{percentage * 100:0}%";
         //txtPercentage.text = $"current({currentXp}) {contextXp} / {PlayerLevel.main.NextLevelXP} xp({xp})";
-        txtPercentage.text = $"{currentXp} / {PlayerLevel.main.NextLevelXP}";
+        txtPercentage.text = $"{contextXp} / {contextMaxXp}";
         imgFill.fillAmount = percentage;
     }
 
