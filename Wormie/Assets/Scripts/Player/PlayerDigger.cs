@@ -38,10 +38,12 @@ public class PlayerDigger : MonoBehaviour
             if (!digResult.Success)
             {
                 UIManager.main.ShowMessage("*", moveResult.Attempt.Origin, Color.red);
+                SoundManager.main.PlaySound(GameSoundType.Denied);
                 isDigging = false;
                 digTimer = 0f;
                 return;
             }
+            SoundManager.main.PlaySound(GameSoundType.Dig);
             if (digResult.Finished)
             {
                 PlayerCharacter.main.Animate(PlayerAnimation.Empty);

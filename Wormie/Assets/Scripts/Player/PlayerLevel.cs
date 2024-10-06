@@ -71,7 +71,7 @@ public class PlayerLevel : MonoBehaviour
 
     public void GainLoot(Loot loot)
     {
-        Debug.Log($"Caught loot '{loot.Type}' with value {loot.Value}");
+        //Debug.Log($"Caught loot '{loot.Type}' with value {loot.Value}");
         if (loot.Type == LootType.Xp)
         {
             GainXp(loot.Value, transform.position);
@@ -85,8 +85,9 @@ public class PlayerLevel : MonoBehaviour
             return;
         }
         xpComing += value;
-        Vector2 offset = new Vector2(-1f, 0f);
-        UIManager.main.ShowXpDrop(value, pos + offset);
+        Vector2 offset = new Vector2(0.5f, 0.5f);
+        //UIManager.main.ShowXpDrop(value, pos + offset);
+        UIManager.main.ShowXpDrop(value, PlayerCharacter.main.GridPosition + offset);
         //UIManager.main.ShowMessage($"+ {value}", pos + offset, Color.cyan);
         UIManager.main.GainXp(value, delegate ()
         {
@@ -108,6 +109,7 @@ public class PlayerLevel : MonoBehaviour
                     previousLevel = currentLevel;
                     currentLevel = levels[level];
                     UIManager.main.ShowLevelPopup();
+                    SoundManager.main.PlaySound(GameSoundType.Levelup);
                 }
             }
         });

@@ -32,6 +32,7 @@ public class LootDrop : MonoBehaviour
     public void Initialize(Vector2 pos)
     {
         spriteRenderer.sprite = loot.Sprite;
+        SoundManager.main.PlaySound(GameSoundType.Found);
         if (loot.SpawnType == SpawnType.RandomDirt)
         {
             bool found = false;
