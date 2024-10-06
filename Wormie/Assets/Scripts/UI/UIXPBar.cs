@@ -27,6 +27,10 @@ public class UIXPBar : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI txtPercentage;
     [SerializeField]
+    private Transform levelContainer;
+    [SerializeField]
+    private TextMeshProUGUI txtLevel;
+    [SerializeField]
     private Image imgFill;
     private bool isShowingLevel = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -50,6 +54,10 @@ public class UIXPBar : MonoBehaviour
 
     private void UpdateView(int currentXp, float fontSize)
     {
+        if (isShowingLevel)
+        {
+            return;
+        }
         int contextXp = currentXp - PlayerLevel.main.PreviousLevelXp;
         int contextMaxXp = PlayerLevel.main.NextLevelXP - PlayerLevel.main.PreviousLevelXp;
         percentage = contextXp / (contextMaxXp * 1.0f);
@@ -67,10 +75,13 @@ public class UIXPBar : MonoBehaviour
         txtPercentage.text = $".~< {PlayerLevel.main.Level + 1} >~.";
         txtPercentage.fontSize = originalFontSize + fontSizeChange;
         imgFill.fillAmount = 1;
+        txtLevel.text = $"{PlayerLevel.main.Level + 1}";
+        levelContainer.gameObject.SetActive(false);
     }
 
     public void Resume()
     {
+        levelContainer.gameObject.SetActive(true);
         isShowingLevel = false;
     }
 

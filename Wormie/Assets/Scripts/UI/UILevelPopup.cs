@@ -36,6 +36,13 @@ public class UILevelPopup : MonoBehaviour
 
     public void ShowAnimationFinished()
     {
+        foreach (UILevelPopupButton button in uiLevelPopupButtons)
+        {
+            if (PlayerLevel.main.IsMaxLevel(button.Type))
+            {
+                button.GreyOut();
+            }
+        }
         isShown = true;
     }
     public void HideAnimationFinished()
@@ -60,10 +67,17 @@ public class UILevelPopup : MonoBehaviour
             {
                 if (Input.GetKeyDown(button.Key))
                 {
-                    button.Activate();
-                    PlayerLevel.main.Upgrade(button.Type);
-                    Hide();
-                    break;
+                    bool allowed = button.Activate();
+                    if (allowed)
+                    {
+                        PlayerLevel.main.Upgrade(button.Type);
+                        Hide();
+                        break;
+                    }
+                    else
+                    {
+                        Debug.Log("cant upgrade, it's max!");
+                    }
                 }
             }
         }

@@ -17,20 +17,21 @@ public class PlayerLevel : MonoBehaviour
 
     private int xp = 0;
     private int xpComing = 0;
-    private int digPower = 0;
-    public int DigPower { get { return digPower; } }
-    private int visionRadius = 1;
-    public int VisionRadius { get { return visionRadius; } }
+    public int DigPower { get { return GetSkill(UpgradeType.DigPower).IntValue; } }
+    public int VisionRadius { get { return Mathf.RoundToInt(GetSkill(UpgradeType.VisionRadius).IntValue); } }
 
     private int level = 0;
     public int Level { get { return level; } }
-    private float moveSpeed = 0;
-    public float MoveSpeed { get { return moveSpeed; } }
-    private float digSpeed = 0;
-    public float DigSpeed { get { return digSpeed; } }
+
+    public float MoveSpeed { get { return GetSkill(UpgradeType.MoveSpeed).Value; } }
+    public float DigSpeed { get { return GetSkill(UpgradeType.DigSpeed).Value; } }
+
 
     public int NextLevelXP { get { return currentLevel.XpRequired; } }
     public int PreviousLevelXp { get { return previousLevel == null ? 0 : previousLevel.XpRequired; } }
+
+    [SerializeField]
+    private List<SkillLevel> skills = new();
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -39,8 +40,31 @@ public class PlayerLevel : MonoBehaviour
         UIManager.main.GainXp(0, delegate () { });
     }
 
+    public SkillLevel GetSkill(UpgradeType upgradeType)
+    {
+        SkillLevel skill = skills.Find(skill => skill.Type == upgradeType);
+        return skill;
+    }
+
+    public bool IsMaxLevel(UpgradeType Type)
+    {
+        SkillLevel skillLevel = GetSkill(Type);
+        if (skillLevel != null)
+        {
+            return skillLevel.Level == skillLevel.MaxLevel;
+        }
+        return false;
+    }
+
     public void Upgrade(UpgradeType Type)
     {
+        SkillLevel skill = GetSkill(Type);
+        if (skill != null)
+        {
+            skill.Level += 1;
+            UIManager.main.UpdateSkill(skill);
+        }
+        /*
         if (Type == UpgradeType.VisionRadius)
         {
             visionRadius += 1;
@@ -52,7 +76,7 @@ public class PlayerLevel : MonoBehaviour
         if (Type == UpgradeType.DigSpeed)
         {
             digSpeed += 0.1f;
-        }
+        }*/
     }
 
     public void GainLoot(Loot loot)
@@ -106,4 +130,17 @@ public class PlayerLevel : MonoBehaviour
 public class LevelProgress
 {
     public int XpRequired;
+}
+
+[System.Serializable]
+public class SkillLevel
+{
+    public int Level = 1;
+    public int MaxLevel = 7;
+    public float Value { get { return Level * Modifier; } }
+    public bool IsInt;
+    public int IntValue { get { return Level * IntModifier; } }
+    public float Modifier;
+    public int IntModifier;
+    public UpgradeType Type;
 }

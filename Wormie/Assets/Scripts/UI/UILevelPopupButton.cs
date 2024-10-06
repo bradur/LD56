@@ -18,6 +18,8 @@ public class UILevelPopupButton : MonoBehaviour
     private Color bgColor;
     [SerializeField]
     private Color activeColor;
+    [SerializeField]
+    private Color greyedOutColor;
     private Color originalTextColor;
     private Color originalBorderColor;
 
@@ -29,6 +31,7 @@ public class UILevelPopupButton : MonoBehaviour
     private Sprite icon;
     [SerializeField]
     private Image iconRenderer;
+    private bool greyedOut = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -44,16 +47,28 @@ public class UILevelPopupButton : MonoBehaviour
         iconRenderer.sprite = icon;
     }
 
+    public void GreyOut()
+    {
+        greyedOut = true;
+        imgBg.color = greyedOutColor;
+        imgBg.color = greyedOutColor;
+    }
+
     public void Deactivate()
     {
         txtKey.color = originalTextColor;
         borderBg.color = originalBorderColor;
     }
 
-    public void Activate()
+    public bool Activate()
     {
+        if (greyedOut)
+        {
+            return false;
+        }
         txtKey.color = activeColor;
         borderBg.color = activeColor;
+        return true;
     }
 
     // Update is called once per frame
@@ -67,5 +82,6 @@ public enum UpgradeType
 {
     VisionRadius,
     DigSpeed,
-    MoveSpeed
+    MoveSpeed,
+    DigPower
 }

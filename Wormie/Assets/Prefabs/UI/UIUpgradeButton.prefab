@@ -139,6 +139,7 @@ MonoBehaviour:
   borderBg: {fileID: 1833619092335620899}
   bgColor: {r: 0.31764707, g: 0.25490198, b: 0.24313727, a: 1}
   activeColor: {r: 0.29803923, g: 0.64705884, b: 0.82745105, a: 1}
+  greyedOutColor: {r: 0.43529415, g: 0.4431373, b: 0.52156866, a: 1}
   type: 0
   icon: {fileID: 1057125164, guid: ea617eab26f019f46810945f9ea99b71, type: 3}
   iconRenderer: {fileID: 8727440204864061862}

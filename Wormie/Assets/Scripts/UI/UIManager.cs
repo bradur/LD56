@@ -15,6 +15,8 @@ public class UIManager : MonoBehaviour
     private UIXPBar uIXPBar;
     [SerializeField]
     private UILevelPopup uiLevelPopup;
+    [SerializeField]
+    private UISkillsBar uiSkillsBar;
 
     [SerializeField]
     private Color defaultPopTextColor;
@@ -25,6 +27,11 @@ public class UIManager : MonoBehaviour
     void Start()
     {
 
+    }
+
+    public void UpdateSkill(SkillLevel skill)
+    {
+        uiSkillsBar.UpdateSkill(skill.Type, skill.Level);
     }
 
     public void ShowLevelPopup()
