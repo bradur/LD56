@@ -128,8 +128,8 @@ public class PlayerMovement : MonoBehaviour
     private void Move()
     {
         moveTimer += Time.deltaTime;
-        movingTransform.position = Vector2.Lerp(startPosition, targetPosition, moveTimer / moveDuration);
-        if (moveTimer >= moveDuration)
+        movingTransform.position = Vector2.Lerp(startPosition, targetPosition, moveTimer / (moveDuration - PlayerLevel.main.MoveSpeed));
+        if (moveTimer >= (moveDuration - PlayerLevel.main.MoveSpeed))
         {
             movingTransform.position = targetPosition;
             isMoving = false;

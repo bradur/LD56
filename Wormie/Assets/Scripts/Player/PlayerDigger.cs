@@ -29,7 +29,7 @@ public class PlayerDigger : MonoBehaviour
             isDigging = false;
             digTimer = 0f;
         }
-        if (digTimer >= digDuration)
+        if (digTimer >= (digDuration - PlayerLevel.main.DigSpeed))
         {
             var digResult = WorldGrid.main.Dig(moveResult.Position);
             if (!digResult.Success)

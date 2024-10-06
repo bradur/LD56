@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class UIManager : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class UIManager : MonoBehaviour
     private UIPopText uiPopTextPrefab;
     [SerializeField]
     private UIXPBar uIXPBar;
+    [SerializeField]
+    private UILevelPopup uiLevelPopup;
 
     [SerializeField]
     private Color defaultPopTextColor;
@@ -24,9 +27,14 @@ public class UIManager : MonoBehaviour
 
     }
 
-    public void GainXp(int value)
+    public void ShowLevelPopup()
     {
-        uIXPBar.AddXP(value);
+        uiLevelPopup.Show(uIXPBar);
+    }
+
+    public void GainXp(int value, UnityAction finishedCallback)
+    {
+        uIXPBar.AddXP(value, finishedCallback);
     }
 
     public void ShowMessage(string message, Vector2 position)

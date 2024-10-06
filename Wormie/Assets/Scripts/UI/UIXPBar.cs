@@ -1,6 +1,7 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class UIXPBar : MonoBehaviour
@@ -21,11 +22,13 @@ public class UIXPBar : MonoBehaviour
     [SerializeField]
     private float fontSizeChange = 16;
 
+    private UnityAction finishedCallback;
 
     [SerializeField]
     private TextMeshProUGUI txtPercentage;
     [SerializeField]
     private Image imgFill;
+    private bool isShowingLevel = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -33,8 +36,9 @@ public class UIXPBar : MonoBehaviour
         originalFontSize = txtPercentage.fontSize;
     }
 
-    public void AddXP(int addition)
+    public void AddXP(int addition, UnityAction finishedCallback)
     {
+        this.finishedCallback = finishedCallback;
         startXp = animatedXp;
         targetXp = xp + addition;
         xp = targetXp;
@@ -57,9 +61,26 @@ public class UIXPBar : MonoBehaviour
         imgFill.fillAmount = percentage;
     }
 
+    public void ShowLevel()
+    {
+        isShowingLevel = true;
+        txtPercentage.text = $".~< {PlayerLevel.main.Level + 1} >~.";
+        txtPercentage.fontSize = originalFontSize + fontSizeChange;
+        imgFill.fillAmount = 1;
+    }
+
+    public void Resume()
+    {
+        isShowingLevel = false;
+    }
+
     // Update is called once per frame
     void Update()
     {
+        if (isShowingLevel)
+        {
+            return;
+        }
         if (!isAnimating)
         {
             return;
@@ -75,6 +96,7 @@ public class UIXPBar : MonoBehaviour
         UpdateView(animatedXp, fontSize);
         if (animateTimer >= animateDuration)
         {
+            finishedCallback();
             UpdateView(targetXp, originalFontSize);
             animateTimer = 0f;
             isAnimating = false;
