@@ -522,8 +522,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7105507655277806760, guid: 9d77fe90e2c372349819a569a101a4d8, type: 3}
+      propertyPath: sprite
+      value: 
+      objectReference: {fileID: -31250113, guid: 3f2e1e1e0453b3a459c3daa7caca6447, type: 3}
+    - target: {fileID: 7105507655277806760, guid: 9d77fe90e2c372349819a569a101a4d8, type: 3}
       propertyPath: minLevel
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

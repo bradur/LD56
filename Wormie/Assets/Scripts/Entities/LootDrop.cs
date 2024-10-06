@@ -29,11 +29,53 @@ public class LootDrop : MonoBehaviour
 
     }
 
+    private void SpawnLoot(Vector2 pos, SpawnType spawnType)
+    {
+        WorldTileType tileType = spawnType == SpawnType.RandomDirt ? WorldTileType.Dirt : (
+            spawnType == SpawnType.RandomPackedDirt ? WorldTileType.PackedDirt : (
+
+                spawnType == SpawnType.RandomMoreDirt ? WorldTileType.MoreDirt : (
+                    spawnType == SpawnType.RandomExtraDirt ? WorldTileType.ExtraDirt : (
+                        WorldTileType.Stone
+                    )
+                )
+            )
+        );
+        if (tileType == WorldTileType.Stone)
+        {
+            Debug.Log("something went wrong");
+            startPosition = pos;
+            targetPosition = Vector2.zero;
+            return;
+        }
+        bool found = false;
+        var tiles = WorldGrid.main.GetTiles(pos, loot.SpawnModifier);
+        while (tiles.Count > 0)
+        {
+            Vector2Int tilePos = tiles[UnityEngine.Random.Range(0, tiles.Count)];
+            WorldTile tile = WorldGrid.main.GetTile(tilePos);
+            if (tile != null && tile.Type == tileType && tile.Diggable(PlayerLevel.main.DigPower))
+            {
+                found = true;
+                targetPosition = tilePos;
+                startPosition = pos;
+                break;
+            }
+            tiles.Remove(tilePos);
+        }
+        if (!found)
+        {
+            startPosition = pos;
+            targetPosition = Vector2.zero;
+        }
+    }
+
     public void Initialize(Vector2 pos)
     {
         spriteRenderer.sprite = loot.Sprite;
         SoundManager.main.PlaySound(GameSoundType.Found);
-        if (loot.SpawnType == SpawnType.RandomDirt)
+        SpawnLoot(pos, loot.SpawnType);
+        /*if (loot.SpawnType == SpawnType.RandomDirt)
         {
             bool found = false;
             var tiles = WorldGrid.main.GetTiles(pos, loot.SpawnModifier);
@@ -78,7 +120,7 @@ public class LootDrop : MonoBehaviour
                 startPosition = pos;
                 targetPosition = Vector2.zero;
             }
-        }
+        }*/
         transform.position = pos;
         Show();
     }
@@ -144,7 +186,9 @@ public class Loot
 public enum SpawnType
 {
     RandomDirt,
-    RandomPackedDirt
+    RandomPackedDirt,
+    RandomMoreDirt,
+    RandomExtraDirt
 }
 
 public enum LootType

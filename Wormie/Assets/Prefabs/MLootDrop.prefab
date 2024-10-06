@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 759619549, guid: 0f8aaf7b000fc99488732250751b7d6d, type: 3}
+  m_Sprite: {fileID: 957434968, guid: 0f8aaf7b000fc99488732250751b7d6d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 9193675644220710211}
   - component: {fileID: 5509151501275159618}
   m_Layer: 0
-  m_Name: PLootDrop
+  m_Name: MLootDrop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -135,10 +135,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loot:
     Type: 0
-    SpawnType: 1
-    SpawnModifier: 5
-    Sprite: {fileID: 759619549, guid: 0f8aaf7b000fc99488732250751b7d6d, type: 3}
-    Value: 100
+    SpawnType: 2
+    SpawnModifier: 7
+    Sprite: {fileID: 957434968, guid: 0f8aaf7b000fc99488732250751b7d6d, type: 3}
+    Value: 250
   animator: {fileID: 5509151501275159618}
   spriteRenderer: {fileID: 52879341390910405}
 --- !u!95 &5509151501275159618
