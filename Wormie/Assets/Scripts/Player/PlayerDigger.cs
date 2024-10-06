@@ -54,7 +54,7 @@ public class PlayerDigger : MonoBehaviour
                     LootDrop lootDrop = afterDig.GetComponent<LootDrop>();
                     if (lootDrop != null)
                     {
-                        lootDrop.Initialize(moveResult.Position);
+                        lootDrop.Initialize(moveResult.Position, moveResult.Tile);
                     }
                 }
             }

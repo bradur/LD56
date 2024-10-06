@@ -47,7 +47,8 @@ public enum GameSoundType
     Levelup,
     Found,
     Dig,
-    Denied
+    Denied,
+    EatGoodie
 }
 
 

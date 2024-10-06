@@ -72,6 +72,7 @@ public class PlayerLevel : MonoBehaviour
     public void GainLoot(Loot loot)
     {
         //Debug.Log($"Caught loot '{loot.Type}' with value {loot.Value}");
+        SoundManager.main.PlaySound(GameSoundType.EatGoodie);
         if (loot.Type == LootType.Xp)
         {
             GainXp(loot.Value, transform.position);

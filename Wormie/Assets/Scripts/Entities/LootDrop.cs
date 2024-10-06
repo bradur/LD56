@@ -20,10 +20,12 @@ public class LootDrop : MonoBehaviour
 
     private Vector2 targetPosition;
     private Vector2 startPosition;
+    public Loot Loot { get { return loot; } }
 
     [SerializeField]
     private SpriteRenderer spriteRenderer;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private WorldTile wTile;
     void Start()
     {
 
@@ -70,57 +72,13 @@ public class LootDrop : MonoBehaviour
         }
     }
 
-    public void Initialize(Vector2 pos)
+    public void Initialize(Vector2 pos, WorldTile tile)
     {
+        wTile = tile;
         spriteRenderer.sprite = loot.Sprite;
         SoundManager.main.PlaySound(GameSoundType.Found);
         SpawnLoot(pos, loot.SpawnType);
-        /*if (loot.SpawnType == SpawnType.RandomDirt)
-        {
-            bool found = false;
-            var tiles = WorldGrid.main.GetTiles(pos, loot.SpawnModifier);
-            while (tiles.Count > 0)
-            {
-                Vector2Int tilePos = tiles[UnityEngine.Random.Range(0, tiles.Count)];
-                WorldTile tile = WorldGrid.main.GetTile(tilePos);
-                if (tile != null && tile.Type == WorldTileType.Dirt && tile.Diggable(PlayerLevel.main.DigPower))
-                {
-                    found = true;
-                    targetPosition = tilePos;
-                    startPosition = pos;
-                    break;
-                }
-                tiles.Remove(tilePos);
-            }
-            if (!found)
-            {
-                startPosition = pos;
-                targetPosition = Vector2.zero;
-            }
-        }
-        else if (loot.SpawnType == SpawnType.RandomPackedDirt)
-        {
-            bool found = false;
-            var tiles = WorldGrid.main.GetTiles(pos, loot.SpawnModifier);
-            while (tiles.Count > 0)
-            {
-                Vector2Int tilePos = tiles[UnityEngine.Random.Range(0, tiles.Count)];
-                WorldTile tile = WorldGrid.main.GetTile(tilePos);
-                if (tile != null && tile.Type == WorldTileType.PackedDirt && tile.Diggable(PlayerLevel.main.DigPower))
-                {
-                    found = true;
-                    targetPosition = tilePos;
-                    startPosition = pos;
-                    break;
-                }
-                tiles.Remove(tilePos);
-            }
-            if (!found)
-            {
-                startPosition = pos;
-                targetPosition = Vector2.zero;
-            }
-        }*/
+
         transform.position = pos;
         Show();
     }
@@ -164,6 +122,7 @@ public class LootDrop : MonoBehaviour
         }
         if (Vector2.Distance(PlayerCharacter.main.GridPosition, transform.position) <= minDistance)
         {
+            WorldGrid.main.ConsumeGoodie(wTile.Prefix);
             PlayerLevel.main.GainLoot(loot);
             Destroy(gameObject);
         }

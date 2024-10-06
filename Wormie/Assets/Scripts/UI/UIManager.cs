@@ -20,6 +20,8 @@ public class UIManager : MonoBehaviour
     private UISkillsBar uiSkillsBar;
     [SerializeField]
     private UIDigPower uiDigPower;
+    [SerializeField]
+    private UIGoodieDisplay uiGoodieDisplay;
 
     [SerializeField]
     private Color defaultPopTextColor;
@@ -36,6 +38,14 @@ public class UIManager : MonoBehaviour
 
     }
 
+    public void InitializeGoodieDisplay(List<WorldTile> goodies)
+    {
+        uiGoodieDisplay.Initialize(goodies);
+    }
+    public void ConsumeGoodie(WorldTile wTile)
+    {
+        uiGoodieDisplay.Consume(wTile);
+    }
     public void UpdateDigPower(int level, float percentage)
     {
         uiDigPower.UpdateDisplay(level, percentage);

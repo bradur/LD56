@@ -19,6 +19,47 @@ public class WorldGrid : MonoBehaviour
 
     private bool flipDir = false;
 
+    private List<WorldTile> allGoodies = new();
+    public List<WorldTile> AllGoodies { get { return allGoodies; } }
+
+    void Start()
+    {
+        allGoodies = GetAllGoodiesInWorld();
+        UIManager.main.InitializeGoodieDisplay(allGoodies);
+    }
+
+    public void ConsumeGoodie(string prefix)
+    {
+        WorldTile wTile = allGoodies.Find(goodie => goodie.Prefix == prefix);
+        UIManager.main.ConsumeGoodie(wTile);
+        allGoodies.Remove(wTile);
+        Debug.Log($"{allGoodies.Count} goodies remain");
+    }
+
+    public List<WorldTile> GetAllGoodiesInWorld()
+    {
+        List<WorldTile> goodies = new();
+        for (int xPos = tilemap.cellBounds.min.x; xPos < tilemap.cellBounds.max.x; xPos += 1)
+        {
+            for (int yPos = tilemap.cellBounds.min.y; yPos < tilemap.cellBounds.max.x; yPos += 1)
+            {
+                TileBase tile = tilemap.GetTile(new Vector3Int(xPos, yPos, 0));
+                if (tile != null && tile.name.ToLower().Contains("goodie"))
+                {
+                    WorldTile wTile = worldTiles.Find(worldTile => tile.name.StartsWith(worldTile.Prefix));
+                    if (wTile == null)
+                    {
+                        Debug.Log("should not happen");
+                        continue;
+                    }
+                    goodies.Add(wTile);
+                }
+            }
+        }
+        Debug.Log($"found {goodies.Count} goodies");
+        return goodies;
+    }
+
     public DigResult Dig(Vector2Int pos)
     {
         TileBase tile = GetTileAt(pos);
