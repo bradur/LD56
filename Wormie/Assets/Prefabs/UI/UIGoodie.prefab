@@ -86,6 +86,7 @@ GameObject:
   - component: {fileID: 4066933129511466269}
   - component: {fileID: 3450962133028870017}
   - component: {fileID: 1584832786634939962}
+  - component: {fileID: 8526541824251401953}
   m_Layer: 5
   m_Name: UIGoodie
   m_TagString: Untagged
@@ -136,6 +137,29 @@ MonoBehaviour:
   imgIcon: {fileID: 3260685842251178630}
   imgBorder: {fileID: 1619848630163854112}
   foundColor: {r: 1, g: 1, b: 1, a: 1}
+  animator: {fileID: 8526541824251401953}
+--- !u!95 &8526541824251401953
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1801835046685199503}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ea119c58fa0d5a040a28d7617e53319c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 2
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &5049426832434238255
 GameObject:
   m_ObjectHideFlags: 0

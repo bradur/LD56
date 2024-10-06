@@ -17,6 +17,8 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private UILevelPopup uiLevelPopup;
     [SerializeField]
+    private UITheEndPopup uiTheEndPopup;
+    [SerializeField]
     private UISkillsBar uiSkillsBar;
     [SerializeField]
     private UIDigPower uiDigPower;
@@ -59,6 +61,10 @@ public class UIManager : MonoBehaviour
     public void ShowLevelPopup()
     {
         uiLevelPopup.Show(uIXPBar);
+    }
+    public void ShowTheEndPopup()
+    {
+        uiTheEndPopup.Show(uiGoodieDisplay.Goodies);
     }
 
     public void GainXp(int value, UnityAction finishedCallback)

@@ -7,6 +7,7 @@ public class UIGoodieDisplay : MonoBehaviour
     [SerializeField]
     private UIGoodie uiGoodiePrefab;
     private List<UIGoodie> uiGoodies = new();
+    public List<UIGoodie> Goodies {get {return uiGoodies;}}
     [SerializeField]
     private Transform goodieContainer;
     // Start is called once before the first execution of Update after the MonoBehaviour is created

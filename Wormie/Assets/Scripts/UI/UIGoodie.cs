@@ -6,12 +6,16 @@ public class UIGoodie : MonoBehaviour
     private WorldTile wTile;
     public string Prefix { get { return wTile.Prefix; } }
 
+    public WorldTile Wtile {get {return wTile;}}
+
     [SerializeField]
     private Image imgIcon;
     [SerializeField]
     private Image imgBorder;
     [SerializeField]
     private Color foundColor;
+    [SerializeField]
+    private Animator animator;
     void Start()
     {
 
@@ -29,7 +33,10 @@ public class UIGoodie : MonoBehaviour
     {
         imgIcon.color = foundColor;
         imgBorder.color = foundColor;
-        Debug.Log("Consumed!");
+    }
+    public void Wiggle()
+    {
+        animator.Play("uiGoodieWiggle");
     }
 
     // Update is called once per frame

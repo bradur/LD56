@@ -39,8 +39,8 @@ public class PlayerLevel : MonoBehaviour
     void Start()
     {
 #if !UNITY_EDITOR
-        foreach(LevelProgress level in levels) {
-            level.Level = 1;
+        foreach(SkillLevel skill in skills) {
+            skill.Level = 1;
         }
 #endif
         currentLevel = levels[level];

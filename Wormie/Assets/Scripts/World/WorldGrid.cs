@@ -44,6 +44,17 @@ public class WorldGrid : MonoBehaviour
         WorldTile wTile = allGoodies.Find(goodie => goodie.Prefix == prefix);
         UIManager.main.ConsumeGoodie(wTile);
         allGoodies.Remove(wTile);
+
+
+        if (allGoodies.Count == 0) {
+            Debug.Log("The End");
+            UIManager.main.ShowTheEndPopup();
+        }
+        
+            //UIManager.main.ShowTheEndPopup();
+        
+
+
         Debug.Log($"{allGoodies.Count} goodies remain");
     }
 
