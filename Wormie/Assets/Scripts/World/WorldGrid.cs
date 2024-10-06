@@ -28,9 +28,12 @@ public class WorldGrid : MonoBehaviour
 
     void Start()
     {
+
 #if !UNITY_EDITOR
         fogOfWar.SetActive(true);
+        fogOfWar.GetComponent<FogOfWar>().ClearFog(PlayerCharacter.main.GridPosition);
 #endif
+
         allGoodies = GetAllGoodiesInWorld();
 #if UNITY_EDITOR
         float xp = AllAvailableXp();

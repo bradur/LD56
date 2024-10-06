@@ -129,6 +129,10 @@ public class PlayerMovement : MonoBehaviour
     {
         moveTimer += Time.deltaTime;
         movingTransform.position = Vector2.Lerp(startPosition, targetPosition, moveTimer / (moveDuration - PlayerLevel.main.MoveSpeed));
+        if (FogOfWar.main != null)
+        {
+            FogOfWar.main.ClearFog(targetGridPosition);
+        }
         if (moveTimer >= (moveDuration - PlayerLevel.main.MoveSpeed))
         {
             movingTransform.position = targetPosition;
@@ -136,10 +140,6 @@ public class PlayerMovement : MonoBehaviour
             moveTimer = 0f;
             gridPosition = targetGridPosition;
             PlayerCharacter.main.AnimateReset();
-            if (FogOfWar.main != null)
-            {
-                FogOfWar.main.ClearFog(gridPosition);
-            }
         }
     }
 }
